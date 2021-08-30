@@ -1,21 +1,28 @@
 package com.ihsan.challenge
 
-fun main(args: Array<String>) {
+fun main() {
     val diPilihan: Array<String> = arrayOf("b", "g", "k")
     var playerSatu = 0
     var playerDua = 0
     var seri = 0
 
+    println("Masukan nama Player 1:")
+    var namaInput = readLine().toString()
+    val namaCek = NamaPlayer(player1 = namaInput)
+    println("Masukan nama Player 2:")
+    namaInput = readLine().toString()
+    val namaCek1 = NamaPlayer(player2 = namaInput)
+
     while (playerSatu + playerDua < 10 || playerSatu == playerDua) {
     val pilihanPlayer1 = player1Jalan(diPilihan)
     val pilihanPlayer2 = player2Jalan(diPilihan)
-        var outputPlayer1 = when (pilihanPlayer1){
+        val outputPlayer1 = when (pilihanPlayer1){
             "b" -> "Batu"
             "g" -> "Gunting"
             "k" -> "Kertas"
             else -> break
         }
-        var outputPlayer2 = when (pilihanPlayer2){
+        val outputPlayer2 = when (pilihanPlayer2){
             "b" -> "Batu"
             "g" -> "Gunting"
             "k" -> "Kertas"
@@ -30,19 +37,19 @@ fun main(args: Array<String>) {
             (pilihanPlayer1 == "k" && pilihanPlayer2 == "b") ||
             (pilihanPlayer1 == "g" && pilihanPlayer2 == "k")){
         playerSatu++
-        println("Player 1 memilih: $outputPlayer1")
-        println("Player 2 memilih: $outputPlayer2")
-        println("Player 1 Menang")
+        println("${namaCek.player1} memilih: $outputPlayer1")
+        println("${namaCek1.player2} memilih: $outputPlayer2")
+        println("${namaCek.player1} Menang")
         println("Skor kali ini: $playerSatu vs $playerDua")
     } else {
         playerDua++
-        println("Player 1 memilih: $outputPlayer1")
-        println("Player 2 memilih: $outputPlayer2")
-        println("Player 2 Menang")
+        println("${namaCek.player1} memilih: $outputPlayer1")
+        println("${namaCek1.player2} memilih: $outputPlayer2")
+        println("${namaCek1.player2} Menang")
         println("Skor kali ini: $playerSatu vs $playerDua")
     }
     }
-    println("Skor Akhir: Player 1 dengan ($playerSatu) poin vs Player 2 dengan ($playerDua) poin dan $seri seri")
+    println("Skor Akhir: ${namaCek.player1} dengan ($playerSatu) poin vs ${namaCek1.player2} dengan ($playerDua) poin dan $seri seri")
 }
 
 fun player1Jalan( diPilihan: Array<String>): String {
